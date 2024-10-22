@@ -7,7 +7,13 @@
       <%= image_tag 'no_image.jpg' %>
     <% end %>
   <% end %>
-    <p>投稿ユーザー画像：<%= image_tag('sample-author1.jpg') %></p>
+    <p>投稿ユーザー画像：
+    <% if post_image.user.profile_image.attached? %>
+      <%= image_tag post_image.user.profile_image, size: "60x60" %>
+    <% else %>
+      <%= image_tag 'no_image.jpg', size: "60x60" %>
+    <% end %>
+    </p>
     <p>ショップ名：<%= post_image.shop_name %></p>
     <p>説明：<%= post_image.caption %></p>
     <p>ユーザーネーム：<%= post_image.user.name %></p>
